@@ -57,6 +57,8 @@ if [ "$INPUT_COMMIT" = 'true' ]; then
     set -x
     if [ "$INPUT_PULL_REQUEST" = 'true' ]; then
         # Create a branch for pull request
+        git fetch origin master:master
+        git checkout master
         git checkout -b "changelog-${INPUT_VERSION}"
     fi
 
