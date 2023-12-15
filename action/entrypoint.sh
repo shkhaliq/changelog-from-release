@@ -8,7 +8,8 @@ git config --global --add safe.directory /github/workspace
 
 # Disable Git LFS
 git config --global lfs.fetchexclude '*'
-
+git fetch origin master:master
+git checkout master
 cd "$GITHUB_WORKSPACE" || exit 1
 
 if [ -z "$INPUT_VERSION" ]; then
@@ -57,8 +58,6 @@ if [ "$INPUT_COMMIT" = 'true' ]; then
     set -x
     if [ "$INPUT_PULL_REQUEST" = 'true' ]; then
         # Create a branch for pull request
-        git fetch origin master:master
-        git checkout master
         git checkout -b "changelog-${INPUT_VERSION}"
     fi
 
