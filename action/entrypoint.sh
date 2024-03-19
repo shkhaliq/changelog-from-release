@@ -76,7 +76,7 @@ if [ "$INPUT_COMMIT" = 'true' ]; then
     fi
     if [ "$INPUT_PULL_REQUEST" = 'true' ]; then
         echo "${INPUT_GITHUB_TOKEN}" | gh auth login --with-token
-        gh pr create --head "changelog-${INPUT_VERSION}" --title "Update changelog for ${INPUT_VERSION}" --body "This PR was automatically created by [changelog-from-release](https://github.com/rhysd/changelog-from-release) action for ${INPUT_VERSION}"
+        gh pr create --head "changelog-${INPUT_VERSION}" --title "Update changelog for ${INPUT_VERSION}" --body "This PR was automatically created by [changelog-from-release](https://github.com/rhysd/changelog-from-release) action for ${INPUT_VERSION}" --label "ignore-for-release"
         # Back to the original branch
         git checkout -
     fi
